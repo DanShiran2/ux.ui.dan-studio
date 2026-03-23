@@ -14,7 +14,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -61,23 +61,127 @@
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="wrap">
-    <p class="hero-eyebrow">Product Design Studio</p>
-    <h1 class="hero-name">
-      ux.ui<br>
-      <span class="hl">.dan</span>
-    </h1>
-    <div class="hero-foot">
-      <p class="hero-desc">
-        We design digital products that turn users into advocates — from research and strategy to pixel-perfect UI.
-      </p>
-      <div class="hero-actions">
-        <a href="#work" class="btn btn-lime">See our work <span class="arr">→</span></a>
-        <a href="#contact" class="btn btn-ghost-dk">Start a project</a>
+    <div class="hero-grid">
+
+      <!-- Left: Text -->
+      <div class="hero-left">
+        <p class="hero-eyebrow">ux.ui.dan — Product Design Studio</p>
+        <h1 class="hero-name">
+          We design products<br>
+          people <span class="hl">love</span> to use.
+        </h1>
+        <div class="hero-foot">
+          <p class="hero-desc">
+            We design digital products that turn users into advocates — from research and strategy to pixel-perfect UI.
+          </p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-lime">See our work <span class="arr">→</span></a>
+            <a href="#contact" class="btn btn-ghost-dk">Start a project</a>
+          </div>
+          <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-bar"></div>
+          </div>
+        </div>
       </div>
-      <div class="hero-scroll">
-        <span>Scroll</span>
-        <div class="scroll-bar"></div>
+
+      <!-- Right: UI Mockup -->
+      <div class="hero-right">
+        <div class="ui-stage">
+
+          <!-- Floating badge — top right -->
+          <div class="ui-badge ui-badge-top">
+            <span class="ui-badge-dot"></span>
+            <span>+28% conversion rate</span>
+          </div>
+
+          <!-- Phone -->
+          <div class="ui-phone">
+            <div class="ui-phone-screen">
+
+              <div class="ui-sb">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+
+              <div class="ui-header">
+                <div class="ui-av"></div>
+                <div>
+                  <div class="ui-name">Good morning, Dan</div>
+                  <div class="ui-sub-name">Your portfolio is growing ↑</div>
+                </div>
+                <div class="ui-notif-btn"></div>
+              </div>
+
+              <div class="ui-balance-card">
+                <div class="ui-bal-label">Total balance</div>
+                <div class="ui-bal-amount">$48,294.50</div>
+                <div class="ui-bal-change">↑ 12.4% this month</div>
+              </div>
+
+              <div class="ui-actions">
+                <div class="ui-action-btn">
+                  <div class="ui-action-icon">↑</div>
+                  <span>Send</span>
+                </div>
+                <div class="ui-action-btn">
+                  <div class="ui-action-icon">↓</div>
+                  <span>Receive</span>
+                </div>
+                <div class="ui-action-btn">
+                  <div class="ui-action-icon">⟳</div>
+                  <span>Exchange</span>
+                </div>
+                <div class="ui-action-btn">
+                  <div class="ui-action-icon">···</div>
+                  <span>More</span>
+                </div>
+              </div>
+
+              <div class="ui-chart">
+                <div class="ui-chart-label">Spending overview</div>
+                <div class="ui-bars">
+                  <div class="ui-bar" style="height:40%"></div>
+                  <div class="ui-bar" style="height:65%"></div>
+                  <div class="ui-bar" style="height:45%"></div>
+                  <div class="ui-bar ui-bar-active" style="height:82%"></div>
+                  <div class="ui-bar" style="height:55%"></div>
+                  <div class="ui-bar" style="height:35%"></div>
+                  <div class="ui-bar" style="height:68%"></div>
+                </div>
+              </div>
+
+              <div class="ui-txns">
+                <div class="ui-txn">
+                  <div class="ui-txn-icon ui-txn-icon-1"></div>
+                  <div class="ui-txn-info">
+                    <div class="ui-txn-name">Netflix</div>
+                    <div class="ui-txn-date">Today, 9:00 AM</div>
+                  </div>
+                  <div class="ui-txn-amount ui-txn-neg">−$15.99</div>
+                </div>
+                <div class="ui-txn">
+                  <div class="ui-txn-icon ui-txn-icon-2"></div>
+                  <div class="ui-txn-info">
+                    <div class="ui-txn-name">Salary deposit</div>
+                    <div class="ui-txn-date">Yesterday</div>
+                  </div>
+                  <div class="ui-txn-amount ui-txn-pos">+$4,200</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Floating badge — bottom left -->
+          <div class="ui-badge ui-badge-bottom">
+            <div class="ui-badge-stars">★★★★★</div>
+            <div class="ui-badge-text">4.9 App Store rating</div>
+          </div>
+
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -119,9 +223,8 @@
 <section id="manifesto">
   <div class="wrap">
     <p class="manifesto-copy reveal">
-      We design<br>
-      products people<br>
-      <span class="hl">love</span> to use.
+      Every pixel<br>
+      has a <span class="hl">purpose.</span>
     </p>
   </div>
 </section>
