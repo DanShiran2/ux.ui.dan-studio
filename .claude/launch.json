@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "Local Preview Server",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "/Users/danshiran/Documents/Claude code/Studio landing page"],
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["/tmp/serve_studio.py"],
       "port": 8080
     }
   ]
