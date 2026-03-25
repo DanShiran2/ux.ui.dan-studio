@@ -224,8 +224,9 @@
 <section id="manifesto">
   <div class="wrap">
     <p class="manifesto-copy reveal">
-      Every pixel<br>
-      has a <span class="hl">purpose.</span>
+      Great design isn't decoration —<br>
+      it's the difference between a product<br>
+      people tolerate and one they <span class="hl">genuinely love.</span>
     </p>
   </div>
 </section>
@@ -236,44 +237,63 @@
      ============================================= -->
 <section id="about">
   <div class="wrap">
-    <p class="eyebrow muted-lt reveal">Who we are</p>
 
-    <div class="about-grid">
-      <div class="reveal">
-        <p class="about-quote-text">
-          "Great design isn't decoration — it's the difference between a product people tolerate and one they genuinely love."
-        </p>
-        <p class="about-attr">— Dan, Founder &amp; Lead Designer</p>
+    <!-- Studio intro -->
+    <div class="studio-intro-block reveal">
+      <p class="eyebrow muted-lt">ux.ui.dan — Herzliya, Israel</p>
+      <h2 class="studio-meet">Nice to meet you!</h2>
+      <p class="studio-intro-desc">We're a product design studio passionate about creating digital experiences people genuinely love. We move fast, work with AI, and never stop learning. Here's what we stand for.</p>
+    </div>
 
-        <p style="font-size:0.9375rem; color:var(--m-lt); line-height:1.75; margin-top:2rem; max-width:480px;">
-          ux.ui.dan is a boutique product design studio. We work with startups and scale-ups who understand that exceptional design is a competitive advantage — not an afterthought.
-        </p>
-        <p style="font-size:0.9375rem; color:var(--m-lt); line-height:1.75; margin-top:1rem; max-width:480px;">
-          Our process is rigorous: we research deeply, design deliberately, and validate everything. Every pixel has a purpose.
-        </p>
+    <!-- Studio pillars — grid with lines -->
+    <div class="studio-pillars">
+      <div class="pillar-cell reveal">
+        <span class="pillar-num">01</span>
+        <h3 class="pillar-title">Design with intent</h3>
+        <p class="pillar-desc">Every decision has a reason. We don't decorate — we solve real problems with purposeful craft.</p>
       </div>
-
-      <div class="about-photo-grid reveal" data-d="2">
-        <div class="photo-ph">Your photo here</div>
-        <div class="photo-ph">Studio work</div>
-        <div class="photo-ph">Design process</div>
+      <div class="pillar-cell reveal">
+        <span class="pillar-num">02</span>
+        <h3 class="pillar-title">People over pixels</h3>
+        <p class="pillar-desc">Understanding users is the first deliverable. We research deeply before a single screen is designed.</p>
+      </div>
+      <div class="pillar-cell reveal">
+        <span class="pillar-num">03</span>
+        <h3 class="pillar-title">AI-native workflow</h3>
+        <p class="pillar-desc">We use AI as a core part of how we work — to move faster, explore more, and deliver sharper results.</p>
+      </div>
+      <div class="pillar-cell reveal">
+        <span class="pillar-num">04</span>
+        <h3 class="pillar-title">Move fast, learn faster</h3>
+        <p class="pillar-desc">We ship early, gather real signal, and iterate with urgency. Speed and quality aren't opposites.</p>
+      </div>
+      <div class="pillar-cell reveal">
+        <span class="pillar-num">05</span>
+        <h3 class="pillar-title">Ship with confidence</h3>
+        <p class="pillar-desc">We validate before you launch — so you go live knowing it works, not hoping it does.</p>
+      </div>
+      <div class="pillar-cell reveal">
+        <span class="pillar-num">06</span>
+        <h3 class="pillar-title">Outcome-oriented</h3>
+        <p class="pillar-desc">We measure success by what changes for your users — not by how many screens we delivered.</p>
       </div>
     </div>
 
-    <div class="about-stats">
-      <div class="reveal">
-        <div class="stat-num" data-target="50">0<span class="suffix">+</span></div>
-        <div class="stat-label">Products designed</div>
+    <!-- Instagram feed — live from Behold API -->
+    <div class="ig-section reveal">
+      <div class="ig-header">
+        <h3 class="ig-title">From our feed.</h3>
+        <a href="https://www.instagram.com/ux.ui.dan/" target="_blank" rel="noopener" class="ig-handle">@ux.ui.dan ↗</a>
       </div>
-      <div class="reveal" data-d="2">
-        <div class="stat-num" data-target="8">0</div>
-        <div class="stat-label">Years of experience</div>
+      <div class="ig-grid" id="ig-grid">
+        <!-- Populated by JS -->
+        <div class="ig-loading">Loading…</div>
       </div>
-      <div class="reveal" data-d="3">
-        <div class="stat-num" data-target="96">0<span class="suffix">%</span></div>
-        <div class="stat-label">Client satisfaction</div>
+      <div class="ig-footer">
+        <a href="https://www.instagram.com/ux.ui.dan/" target="_blank" rel="noopener" class="btn btn-ghost-lt">See all posts ↗</a>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -838,6 +858,35 @@
 </div>
 
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
+<!-- Instagram feed — fetches latest posts from Behold API -->
+<script>
+  (function () {
+    var FEED_ID = 'oL2TwhVt66NLpx6A38zO';
+    var grid = document.getElementById('ig-grid');
+    if (!grid) return;
+
+    fetch('https://feeds.behold.so/' + FEED_ID)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var posts = data.posts || data;
+        var count = Math.min(posts.length, 6);
+        var html = '';
+        for (var i = 0; i < count; i++) {
+          var p = posts[i];
+          var img = (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl)
+            ? p.sizes.medium.mediaUrl
+            : p.thumbnailUrl;
+          html += '<a href="' + p.permalink + '" target="_blank" rel="noopener" class="ig-cell">'
+            + '<img src="' + img + '" alt="Instagram post" loading="lazy">'
+            + '</a>';
+        }
+        grid.innerHTML = html;
+      })
+      .catch(function () {
+        grid.innerHTML = '<a href="https://www.instagram.com/ux.ui.dan/" target="_blank" rel="noopener" class="ig-fallback">View on Instagram ↗</a>';
+      });
+  })();
+</script>
 </body>
 </html>
