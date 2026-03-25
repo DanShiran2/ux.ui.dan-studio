@@ -532,7 +532,90 @@ var caseStudies = {
 
 
 /* =============================================
-   8. CONTACT FORM — Formspree submission
+   8. MANIFESTO — scroll-driven word opacity reveal
+   ============================================= */
+(function () {
+  var section = document.getElementById('manifesto');
+  if (!section) return;
+  var copy = section.querySelector('.manifesto-copy');
+  if (!copy) return;
+
+  // Detach from standard reveal observer
+  copy.classList.remove('reveal');
+
+  var words = [];
+
+  function wrapTextNode(node) {
+    var text = node.textContent;
+    if (!text.trim()) return;
+    var frag = document.createDocumentFragment();
+    var parts = text.split(/(\s+)/);
+    parts.forEach(function (part) {
+      if (/\S/.test(part)) {
+        var span = document.createElement('span');
+        span.className = 'm-word';
+        span.textContent = part;
+        words.push(span);
+        frag.appendChild(span);
+      } else if (part) {
+        frag.appendChild(document.createTextNode(part));
+      }
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+
+  function processChildren(parent) {
+    var children = Array.from(parent.childNodes);
+    children.forEach(function (child) {
+      if (child.nodeType === Node.TEXT_NODE) {
+        wrapTextNode(child);
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        if (child.tagName === 'BR') {
+          // leave <br> intact
+        } else if (child.classList.contains('hl')) {
+          child.classList.add('m-hl');
+          words.push(child);
+        } else {
+          processChildren(child);
+        }
+      }
+    });
+  }
+
+  processChildren(copy);
+
+  var ticking = false;
+
+  function update() {
+    var vh = window.innerHeight;
+    var mid = vh * 0.5;
+    var fadeZone = vh * 0.18; // words start fading in ~18vh before reaching centre
+
+    words.forEach(function (word) {
+      var rect = word.getBoundingClientRect();
+      var wordMid = rect.top + rect.height / 2;
+      // dist > 0: word is below centre; dist <= 0: word has passed centre
+      var dist = wordMid - mid;
+      var p = dist <= 0 ? 1 : Math.max(0, 1 - dist / fadeZone);
+      word.style.opacity = 0.1 + p * 0.9;
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  update();
+})();
+
+
+/* =============================================
+   9. CONTACT FORM — Formspree submission
    ============================================= */
 (function () {
   var form = document.getElementById('contactForm');

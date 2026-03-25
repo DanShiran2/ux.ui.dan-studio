@@ -1030,9 +1030,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .manifesto-copy .hl { color: var(--lime); }
 
+/* Scroll-driven word reveal */
+.manifesto-copy .m-word,
+.manifesto-copy .m-hl {
+  display: inline;
+  opacity: 0.1;
+  will-change: opacity;
+}
+
 
 /* ============================================================
-   ABOUT / QUOTE
+   ABOUT / STUDIO
    ============================================================ */
 #about {
   background: var(--cream);
@@ -1040,71 +1048,135 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: clamp(4rem, 9vw, 8rem) 0;
 }
 
-.about-grid {
+.studio-intro-block {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.studio-meet {
+  font-family: var(--f-disp);
+  font-size: clamp(2.5rem, 5vw, 6rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--t-lt);
+  margin: 0.75rem 0 1.25rem;
+}
+.studio-intro-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--m-lt);
+  max-width: 560px;
+}
+
+/* --- Pillar grid with lines --- */
+.studio-pillars {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(3rem, 6vw, 7rem);
-  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
   margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
-.about-quote-text {
-  font-family: var(--f-disp);
-  font-style: italic;
-  font-size: clamp(1.375rem, 2.5vw, 2.5rem);
-  line-height: 1.35;
-  color: var(--t-lt);
-  margin-bottom: 1.5rem;
-}
-
-.about-attr {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--m-lt);
-}
-
-.about-photo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0.625rem;
-  height: 420px;
-}
-.photo-ph {
-  background: var(--cream-2);
-  border-radius: 4px;
+.pillar-cell {
+  border-right: 1px solid rgba(13,26,15,0.08);
+  border-bottom: 1px solid rgba(13,26,15,0.08);
+  padding: 1.75rem 1.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--m-lt);
-  overflow: hidden;
+  flex-direction: column;
+  gap: 0.6rem;
 }
-.photo-ph:first-child { grid-row: span 2; }
+/* Remove outer borders — only inner lines remain */
+.pillar-cell:nth-child(3n)      { border-right: none; }
+.pillar-cell:nth-last-child(-n+3) { border-bottom: none; }
 
-.about-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding-top: 2.5rem;
+.pillar-num {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--m-lt);
+  opacity: 0.45;
+  margin-bottom: 0.25rem;
+}
+.pillar-title {
+  font-family: var(--f-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--t-lt);
+  letter-spacing: -0.01em;
+}
+.pillar-desc {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--m-lt);
+}
+
+/* --- Instagram section --- */
+.ig-section {
+  padding-top: clamp(2rem, 4vw, 3rem);
   border-top: 1px solid rgba(13,26,15,0.08);
 }
-.stat-num {
-  font-family: var(--f-body);
-  font-size: clamp(2.5rem, 4.5vw, 5.5rem);
-  font-weight: 700;
-  text-transform: none;
-  line-height: 1;
-  color: var(--t-lt);
-  margin-bottom: 0.375rem;
-  letter-spacing: 0.01em;
+.ig-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  gap: 1rem;
 }
-.stat-num .hl-lt { color: var(--lime-dk); }
-.stat-label { font-size: 0.8125rem; color: var(--m-lt); line-height: 1.4; }
+.ig-title {
+  font-family: var(--f-disp);
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: var(--t-lt);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.ig-handle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--m-lt);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.ig-handle:hover { color: var(--lime-dk); }
+
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+}
+.ig-cell {
+  aspect-ratio: 9 / 16;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--cream-2);
+  position: relative;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.ig-cell:hover { opacity: 0.8; }
+.ig-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ig-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+.ig-loading {
+  padding: 2rem;
+  font-size: 0.8125rem;
+  color: var(--m-lt);
+  opacity: 0.5;
+}
+.ig-fallback {
+  padding: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--t-lt);
+  text-decoration: none;
+}
 
 
 /* ============================================================
@@ -1879,8 +1951,8 @@ footer {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-right { display: none; }
 
-  .about-grid  { grid-template-columns: 1fr; }
-  .about-photo-grid { display: none; }
+  .studio-pillars { grid-template-columns: repeat(2, 1fr); }
+  .ig-grid { grid-template-columns: repeat(3, 1fr); }
 
   .split-wrap  { grid-template-columns: 1fr; }
   .split-panel { min-height: 50vh; }
@@ -1910,7 +1982,8 @@ footer {
 @media (max-width: 767px) {
   .work-grid { grid-template-columns: 1fr; }
   .clients-grid { grid-template-columns: repeat(2, 1fr); }
-  .about-stats { grid-template-columns: repeat(3, 1fr); }
+  .ig-grid { grid-template-columns: repeat(3, 1fr); }
+  .studio-pillars { grid-template-columns: 1fr; }
   .fr { grid-template-columns: 1fr; }
   .form-box { padding: 1.5rem; }
   .hero-foot { flex-direction: column; align-items: flex-start; gap: 2rem; }
