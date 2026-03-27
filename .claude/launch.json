@@ -4,7 +4,7 @@
     {
       "name": "Local Preview Server",
       "runtimeExecutable": "/usr/bin/python3",
-      "runtimeArgs": ["/tmp/serve_studio.py"],
+      "runtimeArgs": ["/Users/danshiran/Documents/Claude code/Studio landing page/serve.py"],
       "port": 8080
     }
   ]
