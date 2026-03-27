@@ -1179,95 +1179,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 
-/* ============================================================
-   SPLIT — Research & Strategy / Design & Deliver
-   ============================================================ */
-#split {
-  background: var(--cream);
-  color: var(--t-lt);
-  border-top: 1px solid rgba(13,26,15,0.08);
-}
-
-.split-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.split-panel {
-  padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 4vw, 4rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: 80vh;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  border-top: 1px solid rgba(13,26,15,0.08);
-  transition: background 0.4s var(--ease);
-}
-.split-panel:first-child { border-right: 1px solid rgba(13,26,15,0.08); }
-.split-panel::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-  pointer-events: none;
-}
-.split-panel:nth-child(1)::before { background: radial-gradient(ellipse at 30% 85%, rgba(200,255,87,0.1) 0%, transparent 55%); }
-.split-panel:nth-child(2)::before { background: radial-gradient(ellipse at 70% 85%, rgba(200,255,87,0.1) 0%, transparent 55%); }
-.split-panel:hover::before { opacity: 1; }
-
-.split-num {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--lime-dk);
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.split-head {
-  font-family: var(--f-disp);
-  font-size: clamp(2.5rem, 5.5vw, 7rem);
-  font-weight: 400;
-  text-transform: none;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--t-lt);
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-.split-head .hl-lt { color: var(--lime-dk); }
-
-.split-desc {
-  font-size: 0.9375rem;
-  color: var(--m-lt);
-  line-height: 1.7;
-  max-width: 340px;
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.split-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--t-lt);
-  position: relative;
-  z-index: 1;
-  transition: gap 0.2s var(--ease), color 0.2s;
-}
-.split-panel:hover .split-link { gap: 0.75rem; color: var(--lime-dk); }
-
 
 /* ============================================================
    CASE STUDIES / WORK
@@ -1499,42 +1410,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .process-desc { font-size: 0.875rem; color: var(--m-dk); line-height: 1.65; }
 
-
-/* ============================================================
-   CLIENTS
-   ============================================================ */
-#clients {
-  background: var(--cream);
-  color: var(--t-lt);
-  padding: clamp(4rem, 8vw, 8rem) 0;
-}
-
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1px;
-  background: rgba(13,26,15,0.07);
-  border: 1px solid rgba(13,26,15,0.07);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-}
-
-.client-cell {
-  background: var(--cream);
-  padding: 2rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 2/1;
-  transition: background 0.2s;
-}
-.client-cell:hover { background: var(--cream-2); }
-.client-ph {
-  width: 72px; height: 20px;
-  background: rgba(13,26,15,0.1);
-  border-radius: 3px;
-}
 
 
 /* ============================================================
@@ -1965,7 +1840,6 @@ footer {
   .process-item:nth-child(3),
   .process-item:nth-child(4) { border-top: 1px solid rgba(237,233,220,0.07); }
 
-  .clients-grid { grid-template-columns: repeat(3, 1fr); }
 
   .testi-grid  { grid-template-columns: 1fr; }
 
@@ -1981,7 +1855,6 @@ footer {
 
 @media (max-width: 767px) {
   .work-grid { grid-template-columns: 1fr; }
-  .clients-grid { grid-template-columns: repeat(2, 1fr); }
   .ig-grid { grid-template-columns: repeat(3, 1fr); }
   .studio-pillars { grid-template-columns: 1fr; }
   .fr { grid-template-columns: 1fr; }
