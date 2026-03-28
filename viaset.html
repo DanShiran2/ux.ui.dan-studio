@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViaSet — Case Study · ux.ui.dan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+
+    /* =============================================
+       CASE STUDY PAGE — LOCAL STYLES
+       VIASET · TRAVEL PLATFORM
+       ============================================= */
+
+    :root {
+      --via: #22C55E;
+      --via-dk: #16A34A;
+      --via-bg: #0C1A10;
+    }
+
+    body { background: var(--via-bg); }
+
+    /* ---- NAV ---- */
+    .cs-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(12,26,16,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(34,197,94,0.08);
+    }
+    .cs-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: rgba(237,233,220,0.55);
+      transition: color 0.2s, gap 0.2s;
+    }
+    .cs-nav-back:hover { color: var(--cream); gap: 0.75rem; }
+    .cs-nav-back .arr { font-size: 1rem; transform: scaleX(-1); display: inline-block; }
+    .cs-nav-logo {
+      font-family: var(--f-disp);
+      font-size: 1rem;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+    }
+    .cs-nav-logo .hl { color: var(--via); }
+    .cs-nav-cta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--via);
+      border: 1.5px solid rgba(34,197,94,0.35);
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .cs-nav-cta:hover { background: var(--via); color: #0C1A10; border-color: var(--via); }
+
+    /* ---- HERO ---- */
+    .cs-hero {
+      padding-top: 140px;
+      padding-bottom: 0;
+      background: var(--via-bg);
+      overflow: hidden;
+    }
+    .cs-hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+    .cs-hero-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(34,197,94,0.1);
+      margin-bottom: 2.5rem;
+    }
+    .cs-hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--via);
+      margin-bottom: 0;
+    }
+    .cs-hero-title {
+      font-family: var(--f-disp);
+      font-size: clamp(5rem, 13vw, 13rem);
+      font-weight: 400;
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+    .cs-hero-tagline {
+      font-family: var(--f-disp);
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.2vw, 1.875rem);
+      color: var(--via);
+      margin-bottom: 1rem;
+    }
+    .cs-hero-sub {
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      line-height: 1.75;
+      color: rgba(237,233,220,0.58);
+      max-width: 620px;
+      margin-bottom: 2.5rem;
+    }
+    .cs-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2.5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(34,197,94,0.08);
+    }
+    .cs-meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .cs-meta-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(237,233,220,0.32);
+    }
+    .cs-meta-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    /* ---- HERO IMAGE ---- */
+    .cs-hero-screen {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: center;
+    }
+    .cs-hero-screen .web-frame {
+      width: 90%;
+      max-width: 1100px;
+    }
+
+    /* ---- WEB / DESKTOP FRAME ---- */
+    .web-frame {
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      box-shadow: 0 -4px 0 rgba(34,197,94,0.15), 0 40px 120px rgba(0,0,0,0.7);
+      display: block;
+    }
+    .web-frame-chrome {
+      background: #1C2B1E;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(34,197,94,0.08);
+    }
+    .web-frame-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .web-frame-dot:nth-child(1) { background: #FF5F57; }
+    .web-frame-dot:nth-child(2) { background: #FEBC2E; }
+    .web-frame-dot:nth-child(3) { background: #28C840; }
+    .web-frame-bar {
+      flex: 1;
+      background: rgba(34,197,94,0.07);
+      border-radius: 4px;
+      height: 22px;
+      margin-left: 0.75rem;
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem;
+      font-size: 0.65rem;
+      color: rgba(237,233,220,0.3);
+      letter-spacing: 0.04em;
+    }
+    .web-frame img {
+      width: 100%;
+      display: block;
+    }
+    .web-frame-full {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+      display: block;
+    }
+    .web-frame-full img { width: 100%; display: block; }
+
+    /* ---- SHARED SECTION STYLES ---- */
+    .csp { padding: clamp(5rem, 9vw, 9rem) 0; }
+    .csp-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+    .csp-inner-wide {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 2.5vw, 2.5rem);
+    }
+    .csp-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .csp-label-dk { color: var(--via); }
+    .csp-label-lt { color: var(--via-dk); }
+    .csp-title-dk {
+      font-family: var(--f-disp);
+      font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+    .csp-title-lt {
+      font-family: var(--f-disp);
+      font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--t-lt);
+      margin-bottom: 1.5rem;
+    }
+    .csp-body-dk {
+      font-size: 1.0625rem;
+      line-height: 1.78;
+      color: rgba(237,233,220,0.6);
+    }
+    .csp-body-lt {
+      font-size: 1.0625rem;
+      line-height: 1.78;
+      color: var(--m-lt);
+    }
+
+    /* ---- SCREEN LABEL ---- */
+    .cs-screen-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1.25rem;
+      display: block;
+    }
+    .cs-screen-label-dk { color: rgba(237,233,220,0.28); }
+    .cs-screen-label-lt { color: rgba(13,26,15,0.35); }
+
+    /* ---- OVERVIEW ---- */
+    .cs-overview { background: #F8F7F2; }
+    .cs-overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: start;
+    }
+    .cs-overview-aside { display: flex; flex-direction: column; gap: 2.25rem; }
+    .cs-aside-block { display: flex; flex-direction: column; gap: 0.4rem; }
+    .cs-aside-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--via-dk);
+    }
+    .cs-aside-value {
+      font-size: 0.9375rem;
+      color: var(--t-lt);
+      line-height: 1.6;
+    }
+    .cs-overview-body p { margin-bottom: 1.35rem; }
+    .cs-overview-body p:last-child { margin-bottom: 0; }
+
+    /* ---- PROBLEM ---- */
+    .cs-problem { background: #111A13; }
+    .cs-pull-quote {
+      font-family: var(--f-disp);
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--cream);
+      border-left: 3px solid var(--via);
+      padding-left: 2rem;
+      margin-bottom: 4rem;
+      max-width: 800px;
+    }
+    .cs-pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 2rem);
+      margin-top: 3rem;
+    }
+    .cs-pain-card {
+      background: rgba(34,197,94,0.04);
+      border: 1px solid rgba(34,197,94,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .cs-pain-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--via);
+      margin-bottom: 1rem;
+    }
+    .cs-pain-title {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .cs-pain-desc {
+      font-size: 0.875rem;
+      line-height: 1.68;
+      color: rgba(237,233,220,0.48);
+    }
+
+    /* ---- PRINCIPLES ---- */
+    .cs-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 2rem);
+      margin-top: 3.5rem;
+    }
+    .cs-principle {
+      padding: 2.5rem 2rem;
+      background: rgba(34,197,94,0.04);
+      border: 1px solid rgba(34,197,94,0.1);
+      border-radius: 12px;
+    }
+    .cs-principle-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--via);
+      margin-bottom: 1.25rem;
+    }
+    .cs-principle-title {
+      font-family: var(--f-disp);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
+    }
+    .cs-principle-desc {
+      font-size: 0.875rem;
+      line-height: 1.68;
+      color: rgba(237,233,220,0.48);
+    }
+
+    /* ---- INNOVATION MECHANIC ---- */
+    .cs-mechanic-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 3.5rem;
+    }
+    .cs-mechanic-step {
+      background: #111A13;
+      padding: 2.25rem 1.75rem;
+      position: relative;
+    }
+    .cs-mechanic-step-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--via);
+      margin-bottom: 1rem;
+    }
+    .cs-mechanic-step-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .cs-mechanic-step-desc {
+      font-size: 0.8125rem;
+      line-height: 1.65;
+      color: rgba(237,233,220,0.45);
+    }
+    .cs-mechanic-arrow {
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      background: var(--via);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #0C1A10;
+      font-weight: 700;
+      z-index: 2;
+    }
+    .cs-mechanic-step:last-child .cs-mechanic-arrow { display: none; }
+
+    /* ---- CTA FOOTER ---- */
+    .cs-footer-cta {
+      background: #0C1A10;
+      padding: clamp(5rem, 9vw, 9rem) 0;
+      text-align: center;
+      border-top: 1px solid rgba(34,197,94,0.1);
+    }
+    .cs-footer-cta-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--via);
+      margin-bottom: 1.25rem;
+    }
+    .cs-footer-cta-title {
+      font-family: var(--f-disp);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+    .cs-footer-cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-via {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--via);
+      color: #0C1A10;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      transition: opacity 0.2s;
+    }
+    .btn-via:hover { opacity: 0.88; }
+    .btn-via-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(237,233,220,0.55);
+      border: 1.5px solid rgba(237,233,220,0.15);
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-via-ghost:hover { color: var(--cream); border-color: rgba(237,233,220,0.4); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1100px) {
+      .cs-mechanic-steps { grid-template-columns: repeat(2, 1fr); }
+      .cs-mechanic-arrow { display: none; }
+    }
+    @media (max-width: 900px) {
+      .cs-overview-grid { grid-template-columns: 1fr; }
+      .cs-pain-grid { grid-template-columns: 1fr; }
+      .cs-principles-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .cs-mechanic-steps { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       NAV
+       ============================================= -->
+  <nav class="cs-nav">
+    <a href="index.html" class="cs-nav-back">
+      <span class="arr">→</span> All work
+    </a>
+    <a href="index.html" class="cs-nav-logo">ux.ui.<span class="hl">dan</span></a>
+    <a href="index.html#contact" class="cs-nav-cta">Start a project</a>
+  </nav>
+
+
+  <!-- =============================================
+       HERO
+       ============================================= -->
+  <section class="cs-hero">
+    <div class="cs-hero-inner">
+
+      <!-- Top bar -->
+      <div class="cs-hero-topbar">
+        <span class="cs-hero-eyebrow">Case Study</span>
+        <span class="cs-hero-eyebrow">Travel · 2026</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="cs-hero-title">ViaSet</h1>
+
+      <!-- Tagline + description -->
+      <p class="cs-hero-tagline">The Bloomberg of Travel.</p>
+      <p class="cs-hero-sub">Not a travel agency. A Travel FinTech infrastructure — built to decouple the booking decision from the capital commitment. Indian consumers lock future prices via UPI, receive tickets on WhatsApp, and manage bookings as financial assets in a personal portfolio.</p>
+
+      <!-- Meta strip -->
+      <div class="cs-hero-meta">
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Role</span>
+          <span class="cs-meta-value">Lead Product Designer</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Scope</span>
+          <span class="cs-meta-value">End-to-end UX & UI</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Platform</span>
+          <span class="cs-meta-value">Web App</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Industry</span>
+          <span class="cs-meta-value">Travel · Hospitality</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Market</span>
+          <span class="cs-meta-value">India</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Year</span>
+          <span class="cs-meta-value">2026</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hero screen peeking from bottom -->
+    <div class="cs-hero-screen">
+      <div class="web-frame" style="width:88%; max-width:1100px;">
+        <div class="web-frame-chrome">
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-bar">viaset.com</span>
+        </div>
+        <img src="images/case-studies/ViaSet/Explore.png" alt="ViaSet — Explore" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       OVERVIEW
+       ============================================= -->
+  <section class="csp cs-overview">
+    <div class="csp-inner">
+      <div class="cs-overview-grid">
+
+        <div class="cs-overview-aside">
+          <div class="cs-aside-block">
+            <span class="cs-aside-label">Studio</span>
+            <span class="cs-aside-value">ux.ui.dan<br>Lead Product Design</span>
+          </div>
+          <div class="cs-aside-block">
+            <span class="cs-aside-label">Deliverables</span>
+            <span class="cs-aside-value">UX Strategy & Architecture<br>Smart Lock Flow Design<br>Bachat Savings UI<br>UPI Intent Checkout<br>WhatsApp Trust Layer<br>Portfolio Dashboard<br>Design System & Handoff</span>
+          </div>
+          <div class="cs-aside-block">
+            <span class="cs-aside-label">Design Philosophy</span>
+            <span class="cs-aside-value">UPI-first · WhatsApp-first · Bachat-first</span>
+          </div>
+          <div class="cs-aside-block">
+            <span class="cs-aside-label">Core Challenge</span>
+            <span class="cs-aside-value">Making institutional FinTech infrastructure feel invisible — so users just feel trust</span>
+          </div>
+        </div>
+
+        <div class="cs-overview-body">
+          <p class="csp-label csp-label-lt">Overview</p>
+          <h2 class="csp-title-lt">Travel FinTech. Not a travel agency.</h2>
+          <p class="csp-body-lt">ViaSet is not an OTA. It is a Travel FinTech Infrastructure company — a Smart Orchestration Layer that connects UPI payments, corporate virtual cards, and global travel suppliers inside a single regulated pipe. Users pay in INR via UPI. The platform handles the rest: corporate VCC issuance, cross-border supplier payment, three-way reconciliation, and WhatsApp delivery of the ticket. All in under 60 seconds.</p>
+          <p class="csp-body-lt">The core innovation is the <strong style="color:var(--via-dk);">Smart Lock</strong> — a mechanism that decouples the booking decision from the capital commitment. Users lock a future travel price by paying a small deposit today. If plans change, that deposit converts to credits at full value. If they proceed, the balance is settled at checkout. At no point does the user feel like they're taking a risk — because they aren't.</p>
+          <p class="csp-body-lt">Our design challenge was significant: make one of the most complex regulatory and financial architectures in Indian FinTech feel like the simplest booking experience on the market.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       THE PROBLEM
+       ============================================= -->
+  <section class="csp cs-problem">
+    <div class="csp-inner">
+
+      <p class="csp-label csp-label-dk">The Problem</p>
+      <blockquote class="cs-pull-quote">"India is a high-friction market for cross-border travel. Traditional OTA models fail because they are fundamentally misaligned with how India pays, saves, and trusts."</blockquote>
+      <p class="csp-body-dk" style="max-width:700px;">The Indian travel market isn't just underserved — it's actively hostile to the models that work elsewhere. Credit card penetration is low, cross-border transaction failure rates exceed 40%, a 20% TCS applies to overseas tour packages, and individual outward remittances face LRS caps that make B2C scaling almost impossible. The UX challenge and the infrastructure challenge were one and the same.</p>
+
+      <div class="cs-pain-grid">
+        <div class="cs-pain-card">
+          <p class="cs-pain-num">01</p>
+          <p class="cs-pain-title">Card failure kills conversion</p>
+          <p class="cs-pain-desc">Cross-border card transactions fail at rates exceeding 40% for Indian users — OTP friction, 3DS rules, issuer risk models. Every checkout built around a card form is designed to fail in India. The only payment method that works is UPI.</p>
+        </div>
+        <div class="cs-pain-card">
+          <p class="cs-pain-num">02</p>
+          <p class="cs-pain-title">The TCS Wall adds 20% to every booking</p>
+          <p class="cs-pain-desc">A mandatory 20% Tax Collected at Source applies to "Overseas Tour Packages" — effectively pricing millions of travelers out of legitimate international booking. The product architecture had to be designed around this regulatory constraint from day one.</p>
+        </div>
+        <div class="cs-pain-card">
+          <p class="cs-pain-num">03</p>
+          <p class="cs-pain-title">Booking anxiety stops planning before it starts</p>
+          <p class="cs-pain-desc">Indian consumers distrust websites, distrust early commitment, and distrust cancellation policies. The mental model is: "I'll wait and see." The design challenge was making early booking feel safer than waiting — through transparency, framing, and a mechanic that genuinely eliminated the risk.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       CORE INNOVATION — THE CREDITS MECHANIC
+       ============================================= -->
+  <section class="csp" style="background:#0C1A10;">
+    <div class="csp-inner">
+
+      <p class="csp-label csp-label-dk">The Core Innovation</p>
+      <h2 class="csp-title-dk">The Smart Lock.<br>Not a deposit. An asset.</h2>
+      <p class="csp-body-dk" style="max-width:680px; margin-bottom:0;">The central design challenge was naming and framing. The word "deposit" in India evokes chit funds and unregistered schemes. The word "wallet" triggers regulatory red flags. We landed on <em>Smart Lock</em> — a financial optimization tool that lets users secure today's price against tomorrow's volatility. The framing shifts from "paying in advance" to "making a smart financial move." Designing that shift clearly, confidently, and repeatedly across every screen was the work.</p>
+
+      <!-- The 4-step mechanic -->
+      <div class="cs-mechanic-steps">
+        <div class="cs-mechanic-step">
+          <p class="cs-mechanic-step-num">Step 01</p>
+          <p class="cs-mechanic-step-title">Lock price with a Smart Deposit</p>
+          <p class="cs-mechanic-step-desc">Pay a small upfront amount via UPI — GPay, PhonePe, or Paytm. No card entry, no forms. The price is locked. The AI Prediction Engine shows you why now is the right moment.</p>
+          <span class="cs-mechanic-arrow">→</span>
+        </div>
+        <div class="cs-mechanic-step">
+          <p class="cs-mechanic-step-num">Step 02</p>
+          <p class="cs-mechanic-step-title">Ticket delivered via WhatsApp</p>
+          <p class="cs-mechanic-step-desc">Booking confirmation, PDF ticket, and tax invoice arrive instantly on WhatsApp. Not email. Not an app notification. WhatsApp — because that's where Indian consumers actually trust what they receive.</p>
+          <span class="cs-mechanic-arrow">→</span>
+        </div>
+        <div class="cs-mechanic-step">
+          <p class="cs-mechanic-step-num">Step 03</p>
+          <p class="cs-mechanic-step-title">Manage bookings as a Portfolio</p>
+          <p class="cs-mechanic-step-desc">The dashboard is called "My Portfolio" — not "My Trips." Each locked booking shows its current market value vs. your locked price, with a live profit indicator. Bookings are financial assets, and the UI reflects that.</p>
+          <span class="cs-mechanic-arrow">→</span>
+        </div>
+        <div class="cs-mechanic-step">
+          <p class="cs-mechanic-step-num">Step 04</p>
+          <p class="cs-mechanic-step-title">Plans change? Full value, no loss.</p>
+          <p class="cs-mechanic-step-desc">If plans change, the Smart Lock converts to credits at full booking value. Not a partial refund. Not a voucher. The user never feels punished — and never has a reason to hesitate next time.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Why ViaSet modal — large -->
+    <div class="csp-inner-wide" style="margin-top:4rem;">
+      <div class="web-frame-full" style="max-width:960px; margin:0 auto;">
+        <img src="images/case-studies/ViaSet/Explore/Why ViaSet modal.png" alt="ViaSet — Why Book with ViaSet modal" />
+      </div>
+      <span class="cs-screen-label cs-screen-label-dk" style="text-align:center; margin-top:1.5rem;">The "Why ViaSet?" modal — surfaced contextually on the explore page to build confidence at the moment of hesitation</span>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       EXPLORE & SEARCH
+       ============================================= -->
+  <section class="csp" style="background:#F8F7F2;">
+    <div class="csp-inner">
+      <p class="csp-label csp-label-lt">Explore & Discover</p>
+      <h2 class="csp-title-lt">Two types of traveler.<br>One home screen.</h2>
+      <p class="csp-body-lt" style="max-width:680px;">ViaSet surfaces a persistent navigation choice right from the header: Last Minute Deals for the spontaneous traveler, Plan Ahead for the deliberate one. The home screen then serves both simultaneously — curated sections for each intent, without making either group feel like a secondary user. Search is immediate, categorised by holiday type, and pre-populated with the destinations Indian travelers actually search for.</p>
+    </div>
+
+    <!-- Search screens grid -->
+    <div class="csp-inner-wide" style="margin-top:4rem;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.5rem,3vw,2.5rem); align-items:start;">
+
+        <div>
+          <div class="web-frame-full">
+            <img src="images/case-studies/ViaSet/Explore/Search/Where to.png" alt="ViaSet — Where to search" />
+          </div>
+          <span class="cs-screen-label cs-screen-label-lt">Search — "Where to?" with holiday type filters and popular destinations</span>
+        </div>
+
+        <div>
+          <div class="web-frame-full">
+            <img src="images/case-studies/ViaSet/Search results/anytime.png" alt="ViaSet — Search results" />
+          </div>
+          <span class="cs-screen-label cs-screen-label-lt">Results — Rich hotel cards with trust signals, price per night, and amenity badges at a glance</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Dates + Guests -->
+    <div class="csp-inner-wide" style="margin-top:clamp(2rem,4vw,3rem);">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.5rem,3vw,2.5rem); align-items:start;">
+        <div>
+          <div class="web-frame-full">
+            <img src="images/case-studies/ViaSet/Explore/Search/Dates.png" alt="ViaSet — Date picker" />
+          </div>
+          <span class="cs-screen-label cs-screen-label-lt">Date selection — Inline calendar with check-in / check-out clarity</span>
+        </div>
+        <div>
+          <div class="web-frame-full">
+            <img src="images/case-studies/ViaSet/Explore/Search/Guests.png" alt="ViaSet — Guest selector" />
+          </div>
+          <span class="cs-screen-label cs-screen-label-lt">Guest selector — Simple, minimal, no cognitive load</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       HOTEL DETAILS
+       ============================================= -->
+  <section class="csp" style="background:#111A13;">
+    <div class="csp-inner">
+      <p class="csp-label csp-label-dk">Hotel Details</p>
+      <h2 class="csp-title-dk">Everything you need<br>to say yes.</h2>
+      <p class="csp-body-dk" style="max-width:680px;">The hotel detail page was designed around a single conversion goal: give users enough information to book with confidence, without overwhelming them. Photos, sustainability tags, amenities, a live map, verified reviews, and room-level selection are all surfaced in a single, scrollable flow — with the booking CTA persistent throughout.</p>
+    </div>
+
+    <!-- Full-width hotel detail screen -->
+    <div class="csp-inner-wide" style="margin-top:4rem;">
+      <div class="web-frame" style="max-width:1200px; margin:0 auto;">
+        <div class="web-frame-chrome">
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-bar">viaset.com/hotel/laguna-verde-eco-lodge</span>
+        </div>
+        <img src="images/case-studies/ViaSet/Hotel Details.png" alt="ViaSet — Hotel Details page" />
+      </div>
+      <span class="cs-screen-label cs-screen-label-dk" style="text-align:center;">Hotel Details — Laguna Verde Eco Lodge. Photos, amenities, map, reviews, and room selection in one flow.</span>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       BOOKING FLOW
+       ============================================= -->
+  <section class="csp" style="background:#F8F7F2;">
+    <div class="csp-inner">
+      <p class="csp-label csp-label-lt">The Booking Flow</p>
+      <h2 class="csp-title-lt">UPI Intent.<br>60 seconds. Done.</h2>
+      <p class="csp-body-lt" style="max-width:680px;">The checkout was built around one constraint: users drop off the moment they see a card form. UPI is the default and dominant payment method — displayed as large, immediately recognisable buttons for GPay, PhonePe, and Paytm. The price summary shows the full Bachat breakdown — original price crossed out, early-booking price prominent, savings in rupees. Confirmation arrives on WhatsApp before the user has scrolled to the bottom of the success screen.</p>
+    </div>
+
+    <div class="csp-inner-wide" style="margin-top:4rem;">
+      <div style="display:grid; grid-template-columns:2fr 1fr; gap:clamp(1.5rem,3vw,2.5rem); align-items:start;">
+
+        <div>
+          <div class="web-frame-full">
+            <img src="images/case-studies/ViaSet/Booking/Your details.png" alt="ViaSet — Booking checkout" />
+          </div>
+          <span class="cs-screen-label cs-screen-label-lt">Checkout — UPI-first payment, India phone prefix, live price summary with early-booking savings clearly shown</span>
+        </div>
+
+        <div>
+          <div class="web-frame-full">
+            <img src="images/case-studies/ViaSet/Booking/Confirmed.png" alt="ViaSet — Booking confirmed" />
+          </div>
+          <span class="cs-screen-label cs-screen-label-lt">Confirmation — Clean, celebratory, and immediately actionable</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       REWARDS SYSTEM
+       ============================================= -->
+  <section class="csp" style="background:#0C1A10;">
+    <div class="csp-inner">
+      <p class="csp-label csp-label-dk">Rewards & Credits</p>
+      <h2 class="csp-title-dk">Loyalty that<br>actually makes sense.</h2>
+      <p class="csp-body-dk" style="max-width:680px;">Most travel loyalty programs hide their value behind points-to-currency conversions that make users feel like they're constantly losing out. ViaSet's rewards screen makes credits tangible: your balance is front and centre, each credit batch shows its expiry, your Explorer tier is clearly displayed with a visible path to the next level, and applicable hotels are surfaced immediately beneath your balance so you know exactly what your credits can unlock right now.</p>
+    </div>
+
+    <!-- Rewards screen full width -->
+    <div class="csp-inner-wide" style="margin-top:4rem;">
+      <div class="web-frame" style="max-width:1000px; margin:0 auto;">
+        <div class="web-frame-chrome">
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-dot"></span>
+          <span class="web-frame-bar">viaset.com/rewards</span>
+        </div>
+        <img src="images/case-studies/ViaSet/Rewards and Credits.png" alt="ViaSet — Rewards and Credits" />
+      </div>
+      <span class="cs-screen-label cs-screen-label-dk" style="text-align:center;">Rewards — Explorer 1 tier, 580 credits, expiry dates per batch, progress to next tier, and applicable hotels shown inline</span>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       DESIGN PRINCIPLES
+       ============================================= -->
+  <section class="csp" style="background:#111A13;">
+    <div class="csp-inner">
+      <p class="csp-label csp-label-dk">Design Principles</p>
+      <h2 class="csp-title-dk">What guided<br>every decision.</h2>
+
+      <div class="cs-principles-grid">
+        <div class="cs-principle">
+          <p class="cs-principle-num">01 — Bachat-first</p>
+          <h3 class="cs-principle-title">Savings in rupees, not percentages</h3>
+          <p class="cs-principle-desc">Indians are value-hunters, but percentages are abstract. Every savings display shows the tangible equivalent: "You saved ₹12,000 — a return flight to Goa." The Bachat widget makes value concrete, immediate, and sharable. It's not a discount — it's a story the user tells themselves.</p>
+        </div>
+        <div class="cs-principle">
+          <p class="cs-principle-num">02 — WhatsApp-first</p>
+          <h3 class="cs-principle-title">WhatsApp is the trust layer</h3>
+          <p class="cs-principle-desc">Indian consumers often distrust websites but strongly trust WhatsApp. Every booking confirmation, PDF ticket, and tax invoice arrives via WhatsApp Business API — instantly. The app doesn't fight for trust. It outsources trust to the channel that already has it.</p>
+        </div>
+        <div class="cs-principle">
+          <p class="cs-principle-num">03 — UPI Intent</p>
+          <h3 class="cs-principle-title">Zero typing. Zero forms. Zero drop-off.</h3>
+          <p class="cs-principle-desc">The checkout is GPay / PhonePe / Paytm as large selectable buttons. On mobile, UPI Intent deep-links directly to the user's preferred app. On desktop, a dynamic QR code appears. No VPA typing. No card entry. No form that can fail. The fewer decisions, the higher the conversion.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       CTA FOOTER
+       ============================================= -->
+  <section class="cs-footer-cta">
+    <div class="csp-inner">
+      <p class="cs-footer-cta-eyebrow">Like what you see?</p>
+      <h2 class="cs-footer-cta-title">Let's build your<br>next product.</h2>
+      <div class="cs-footer-cta-actions">
+        <a href="index.html#contact" class="btn-via">Start a project →</a>
+        <a href="index.html" class="btn-via-ghost">See all work</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
