@@ -629,7 +629,9 @@
 
       <!-- Right: form -->
       <div class="form-box reveal" data-d="2">
-        <form id="contactForm" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" method="POST" novalidate>
+        <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden" style="display:none;"><input name="bot-field" /></p>
 
           <div class="fr">
             <div class="fg">
@@ -840,7 +842,25 @@
         e.preventDefault();
         var firstErr = form.querySelector('.is-invalid');
         if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
       }
+
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function () {
+        form.innerHTML = '<div style="text-align:center;padding:3rem 1rem;"><p style="font-family:var(--f-disp);font-size:2rem;color:var(--cream);margin-bottom:1rem;">Message sent ✓</p><p style="color:var(--m-dk);font-size:0.95rem;">Thanks! We\'ll get back to you within 24 hours.</p></div>';
+      }).catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send Message →';
+        alert('Something went wrong. Please email us directly at dan@danshiran.co.il');
+      });
     });
   })();
 </script>
