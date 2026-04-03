@@ -147,11 +147,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--f-body);
   font-size: 1.125rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.05em;
   color: var(--t-dk);
   line-height: 1;
 }
-.nav-logo .hl { color: var(--lime); }
+.nav-logo .hl { color: #C8FF57; }
 
 .nav-links {
   display: flex;
